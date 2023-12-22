@@ -12,7 +12,17 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function deleteDigit(n) {
-  return Number(n.toString().slice(1));
+  let numToArr = n.toString().split('');
+  let result = [];
+  if (numToArr.length === 2) {
+    return numToArr[0] > numToArr[1] ? Number(numToArr[0]):Number(numToArr[1]);
+  }
+  for (let i = 0; i < numToArr.length; i +=1) {
+  if (numToArr[i] < numToArr[i + 1]) {
+    result = numToArr.splice(numToArr.indexOf(numToArr[i]),1)
+  }
+    }
+    return Number(numToArr.join(''));
 }
 
 module.exports = {
